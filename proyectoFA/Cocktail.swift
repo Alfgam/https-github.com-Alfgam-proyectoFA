@@ -13,6 +13,4 @@ struct Cocktail: View {
     }
 }
 
-#Preview {
-    Cocktail()
-}
+

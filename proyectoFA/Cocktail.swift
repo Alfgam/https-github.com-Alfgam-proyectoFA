@@ -12,11 +12,14 @@ struct Cocktail: View {
         Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
     }
 }
+import SwiftUI
 
+// Modelo para representar un ingrediente en un cóctel
 struct Ingredient {
     var name: String
 }
 
+// Modelo para representar un cóctel
 struct CocktailModel {
     var name: String
     var ingredients: [Ingredient]
@@ -24,8 +27,10 @@ struct CocktailModel {
     var tags: [String]
 }
 
+// Vista que muestra los detalles de un cóctel, incluyendo su imagen, ingredientes, receta y etiquetas
 struct CocktailDetail: View {
     
+    // Cóctel por defecto con datos de ejemplo
     var cocktail: CocktailModel = .init(
         name: "Piña colada",
         ingredients: [
@@ -42,6 +47,7 @@ struct CocktailDetail: View {
             "Highball glass"
         ])
     
+    // Estado para gestionar la selección de las pestañas
     @State var tabSelection = 0
     @State private var sectionSelected = "Ingredients"
     let sectionsOptions = ["Ingredients", "Receipt"]
@@ -49,7 +55,9 @@ struct CocktailDetail: View {
     var body: some View {
         GeometryReader { geometry in
             ZStack {
+                // Vista principal
                 VStack {
+                    // Encabezado con imagen y nombre del cóctel
                     ZStack {
                         Image("Drink", bundle: nil)
                             .resizable()
@@ -60,11 +68,13 @@ struct CocktailDetail: View {
                             Spacer()
                             VStack {
                                 HStack {
+                                    // Nombre del cóctel
                                     Text(cocktail.name)
                                         .padding()
                                         .foregroundStyle(.white)
                                         .font(.largeTitle)
                                     Spacer()
+                                    // Botones para compartir y detalles adicionales
                                     Button {
                                     } label: {
                                         Image(systemName: "square.and.arrow.up")
@@ -88,6 +98,8 @@ struct CocktailDetail: View {
                     }
                     .padding(.horizontal, -20)
                     .frame(height: geometry.size.height * 2 / 5)
+                    
+                    // Contenido principal con pestañas para cambiar entre ingredientes y receta
                     VStack {
                         Spacer()
                             .frame(height: 20)
@@ -97,24 +109,30 @@ struct CocktailDetail: View {
                             }
                         }
                         .pickerStyle(.segmented)
+                        
+                        // Contenido dinámico basado en la selección de pestañas
                         if (sectionSelected == "Ingredients") {
+                            // Lista de ingredientes
                             List(cocktail.ingredients, id: \.name) { ingredient in
                                 Text(ingredient.name)
                             }
                             .listStyle(PlainListStyle())
                             .listRowSeparator(.hidden)
                         } else {
+                            // ScrollView para mostrar la receta
                             ScrollView {
                                 Text(cocktail.receip)
                             }
-                            
                         }
                     }
                 }
+                
+                // Vista con etiquetas y borde
                 VStack {
                     Spacer()
                         .frame(height: (geometry.size.height * 2  / 5) - 20 )
                     ScrollView(.horizontal, showsIndicators: false) {
+                        // HStack para mostrar etiquetas
                         HStack(spacing: 0) {
                             ForEach(cocktail.tags, id: \.self) { tag in
                                 Text(tag)
@@ -141,6 +159,7 @@ struct CocktailDetail: View {
         }
     }
 }
+
 
 
 struct CocktailDetail_Previews: PreviewProvider {

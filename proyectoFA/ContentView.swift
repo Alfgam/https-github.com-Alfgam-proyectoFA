@@ -4,7 +4,6 @@
 //
 //  Created by Alfonso Gamboa  on 27/11/23.
 //
-
 import SwiftUI
 
 struct ContentView: View {
@@ -68,16 +67,15 @@ struct ContentView: View {
                     
                 }
                 
-                Button("Iniciar Sesion"){
-        
-                }
-                .frame(maxWidth: .infinity)
-                .padding()
-                .background(.brown)
-                .padding()
-                
-                
-                Spacer()
+                NavigationLink(destination: Cocktail()) {
+                                   Text("Iniciar Sesión")
+                                       .frame(maxWidth: .infinity)
+                                       .padding()
+                                       .background(Color.brown)
+                                       .foregroundColor(.white)
+                                       .cornerRadius(10)
+                                       .padding()
+                               }              
              
                 Text("Terminos y condiciones")
                     .foregroundColor(.mint)
@@ -87,3 +85,4 @@ struct ContentView: View {
         }
     }
 }
+

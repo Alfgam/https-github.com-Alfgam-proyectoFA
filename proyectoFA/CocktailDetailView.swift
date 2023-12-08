@@ -7,14 +7,15 @@
 import SwiftUI
 
 // Modelo para representar un ingrediente en un cóctel
-struct Ingredient {
+struct Details: Identifiable, Hashable {
     var name: String
+    let id = UUID()
 }
 
 // Modelo para representar un cóctel
 struct CocktailModel {
     var name: String
-    var ingredients: [Ingredient]
+    var ingredients: [Details]
     var receip: String
     var tags: [String]
 }
@@ -83,19 +84,13 @@ struct CocktailDetailView: View {
                         .pickerStyle(.segmented)
                         
                         // Contenido dinámico basado en la selección de pestañas
-                        if (viewModel.sectionSelected == "Ingredients") {
-                            // Lista de ingredientes
-                            List(viewModel.cocktail.ingredients, id: \.name) { ingredient in
-                                Text(ingredient.name)
-                            }
-                            .listStyle(PlainListStyle())
-                            .listRowSeparator(.hidden)
-                        } else {
-                            // ScrollView para mostrar la receta
+                        List(viewModel.details) { detail in
                             ScrollView {
-                                Text(viewModel.cocktail.receip)
+                                Text(detail.name)
                             }
                         }
+                        .listStyle(PlainListStyle())
+                        .listRowSeparator(.hidden)
                     }
                 }
                 

@@ -11,7 +11,8 @@ class CocktailDetailViewModel: ObservableObject {
     
     // Estado para gestionar la selección de las pestañas
     @Published var sectionSelected = "Ingredients"
-    let sectionsOptions = ["Ingredients", "Receipt"]
+    let sectionsOptions = ["Ingredients", "Receipt", "Receipt"]
+    @Published var details: [Details]
     
     // Cóctel por defecto con datos de ejemplo
     var cocktail: CocktailModel = .init(
@@ -29,4 +30,14 @@ class CocktailDetailViewModel: ObservableObject {
             "Cocktail",
             "Highball glass"
         ])
+    
+    init(){
+        details = [
+            Details(name: cocktail.receip)
+        ]
+        
+        details = cocktail.ingredients
+    }
+    
+    
 }

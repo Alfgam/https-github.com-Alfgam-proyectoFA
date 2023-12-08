@@ -21,7 +21,7 @@ struct Cocktail: View {
                         HStack {
                             // Contenido Horizontal
                             
-                            NavigationLink(destination: CocktailDetail()) {
+                            NavigationLink(destination: CocktailDetailView()) {
                                 VStack {
                                     
                                     Image("drink1")
@@ -35,7 +35,7 @@ struct Cocktail: View {
                                 }
                             }
                             
-                            NavigationLink(destination: CocktailDetail()) {
+                            NavigationLink(destination: CocktailDetailView()) {
                                 VStack {
                                     
                                     Image("drink2")
@@ -48,7 +48,7 @@ struct Cocktail: View {
                                         .foregroundColor(.black)
                                 }
                             }
-                            NavigationLink(destination: CocktailDetail()) {
+                            NavigationLink(destination: CocktailDetailView()) {
                                 VStack {
                                     
                                     Image("drink3")
@@ -62,7 +62,7 @@ struct Cocktail: View {
                                 }
                             }
                             
-                            NavigationLink(destination: CocktailDetail()) {
+                            NavigationLink(destination: CocktailDetailView()) {
                                 VStack {
                                     
                                     Image("drink4")
@@ -82,7 +82,7 @@ struct Cocktail: View {
                     ScrollView(.horizontal) {
                         HStack {
                             // Contenido Horizontal
-                            NavigationLink(destination: CocktailDetail()) {
+                            NavigationLink(destination: CocktailDetailView()) {
                                 VStack {
                                     
                                     Image("drink5")
@@ -96,7 +96,7 @@ struct Cocktail: View {
                                 }
                             }
                             
-                            NavigationLink(destination: CocktailDetail()) {
+                            NavigationLink(destination: CocktailDetailView()) {
                                 VStack {
                                     
                                     Image("drink6")
@@ -109,7 +109,7 @@ struct Cocktail: View {
                                         .foregroundColor(.black)
                                 }
                             }
-                            NavigationLink(destination: CocktailDetail()) {
+                            NavigationLink(destination: CocktailDetailView()) {
                                 VStack {
                                     
                                     Image("drink7")
@@ -123,7 +123,7 @@ struct Cocktail: View {
                                 }
                             }
                             
-                            NavigationLink(destination: CocktailDetail()) {
+                            NavigationLink(destination: CocktailDetailView()) {
                                 VStack {
                                     
                                     Image("drink8")
@@ -142,7 +142,7 @@ struct Cocktail: View {
                     ScrollView(.horizontal) {
                         HStack {
                             // Contenido Horizontal
-                            NavigationLink(destination: CocktailDetail()) {
+                            NavigationLink(destination: CocktailDetailView()) {
                                 VStack {
                                     
                                     Image("drink9")
@@ -156,7 +156,7 @@ struct Cocktail: View {
                                 }
                             }
                             
-                            NavigationLink(destination: CocktailDetail()) {
+                            NavigationLink(destination: CocktailDetailView()) {
                                 VStack {
                                     
                                     Image("drink10")
@@ -169,7 +169,7 @@ struct Cocktail: View {
                                         .foregroundColor(.black)
                                 }
                             }
-                            NavigationLink(destination: CocktailDetail()) {
+                            NavigationLink(destination: CocktailDetailView()) {
                                 VStack {
                                     
                                     Image("drink11")
@@ -183,7 +183,7 @@ struct Cocktail: View {
                                 }
                             }
                             
-                            NavigationLink(destination: CocktailDetail()) {
+                            NavigationLink(destination: CocktailDetailView()) {
                                 VStack {
                                     
                                     Image("drink12")

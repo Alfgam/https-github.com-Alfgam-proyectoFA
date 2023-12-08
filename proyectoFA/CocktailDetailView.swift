@@ -20,29 +20,9 @@ struct CocktailModel {
 }
 
 // Vista que muestra los detalles de un cóctel, incluyendo su imagen, ingredientes, receta y etiquetas
-struct CocktailDetail: View {
+struct CocktailDetailView: View {
     
-    // Cóctel por defecto con datos de ejemplo
-    var cocktail: CocktailModel = .init(
-        name: "Piña colada",
-        ingredients: [
-            .init(name: "60 ml de ron blanco"),
-            .init(name: "60 ml de leche de coco"),
-            .init(name: "60 ml de zumo de piña"),
-            .init(name: "15 ml de zumo de lima"),
-            .init(name: "22 ml de sirope de azúcar"),
-        ],
-        receip: "En una batidora de vaso (si no tienes se puede usar de mano) mezcla una parte de ron blanco, una parte de crema o leche de coco y una de zumo de piña, preferiblemente natural. Si usas uno comercial evita el nectar, que tiene más azúcares. Añade zumo de lima (15 ml) y, si no has usado una leche de coco o un zumo que lleve azúcar añadido, 22 ml de sirope de azúcar. Se mezcla todo en la batidora con unos 180 ml de hielo picado hasta lograr la consistencia de un batido y se sirve en una de piña colada (aunque se puede poner en cualquier vaso alto y ancho). La decoración clásica del cóctel manda presentarlo con un trozo de piña natural, una sombrilla y una pajita",
-        tags: [
-            "Alcoholic",
-            "Cocktail",
-            "Highball glass"
-        ])
-    
-    // Estado para gestionar la selección de las pestañas
-    @State var tabSelection = 0
-    @State private var sectionSelected = "Ingredients"
-    let sectionsOptions = ["Ingredients", "Receipt"]
+    @StateObject private var viewModel: CocktailDetailViewModel = CocktailDetailViewModel()
     
     var body: some View {
         GeometryReader { geometry in
@@ -61,7 +41,7 @@ struct CocktailDetail: View {
                             VStack {
                                 HStack {
                                     // Nombre del cóctel
-                                    Text(cocktail.name)
+                                    Text(viewModel.cocktail.name)
                                         .padding()
                                         .foregroundStyle(.white)
                                         .font(.largeTitle)
@@ -95,17 +75,17 @@ struct CocktailDetail: View {
                     VStack {
                         Spacer()
                             .frame(height: 20)
-                        Picker("Section", selection: $sectionSelected) {
-                            ForEach(sectionsOptions, id: \.self) {
+                        Picker("Section", selection: $viewModel.sectionSelected) {
+                            ForEach(viewModel.sectionsOptions, id: \.self) {
                                 Text($0)
                             }
                         }
                         .pickerStyle(.segmented)
                         
                         // Contenido dinámico basado en la selección de pestañas
-                        if (sectionSelected == "Ingredients") {
+                        if (viewModel.sectionSelected == "Ingredients") {
                             // Lista de ingredientes
-                            List(cocktail.ingredients, id: \.name) { ingredient in
+                            List(viewModel.cocktail.ingredients, id: \.name) { ingredient in
                                 Text(ingredient.name)
                             }
                             .listStyle(PlainListStyle())
@@ -113,7 +93,7 @@ struct CocktailDetail: View {
                         } else {
                             // ScrollView para mostrar la receta
                             ScrollView {
-                                Text(cocktail.receip)
+                                Text(viewModel.cocktail.receip)
                             }
                         }
                     }
@@ -126,11 +106,11 @@ struct CocktailDetail: View {
                     ScrollView(.horizontal, showsIndicators: false) {
                         // HStack para mostrar etiquetas
                         HStack(spacing: 0) {
-                            ForEach(cocktail.tags, id: \.self) { tag in
+                            ForEach(viewModel.cocktail.tags, id: \.self) { tag in
                                 Text(tag)
                                     .font(.caption)
                                     .foregroundColor(.black)
-                                    .frame(width: (geometry.size.width / CGFloat(cocktail.tags.count)) - 20)
+                                    .frame(width: (geometry.size.width / CGFloat(viewModel.cocktail.tags.count)) - 20)
                             }
                         }
                     }
@@ -156,7 +136,7 @@ struct CocktailDetail: View {
 
 struct CocktailDetail_Previews: PreviewProvider {
     static var previews: some View {
-        return CocktailDetail()
+        return CocktailDetailView()
     }
 }
 

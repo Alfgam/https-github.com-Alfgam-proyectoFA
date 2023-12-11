@@ -7,11 +7,21 @@
 
 import Foundation
 
+enum SectionOption: String {
+    case ingredient = "Ingredients"
+    case receipt = "Receipt"
+    case history = "History"
+}
+
 class CocktailDetailViewModel: ObservableObject {
     
     // Estado para gestionar la selección de las pestañas
-    @Published var sectionSelected = "Ingredients"
-    let sectionsOptions = ["Ingredients", "Receipt", "Receipt"]
+    @Published var sectionSelected: SectionOption = .ingredient {
+        didSet {
+            changeSelection(sectionSelected: sectionSelected)
+        }
+    }
+    let sectionsOptions: [SectionOption] = [.ingredient, .receipt, .history]
     @Published var details: [Details]
     
     // Cóctel por defecto con datos de ejemplo
@@ -32,12 +42,21 @@ class CocktailDetailViewModel: ObservableObject {
         ])
     
     init(){
-        details = [
-            Details(name: cocktail.receip)
-        ]
-        
         details = cocktail.ingredients
     }
     
-    
+    func changeSelection(sectionSelected: SectionOption) {
+        switch sectionSelected {
+        case .ingredient:
+            details = cocktail.ingredients
+        case .receipt:
+            details = [
+                Details(name: cocktail.receip)
+            ]
+        case .history:
+            details = [
+                .init(name: "Una breve descripción de la historia de la piña colada")
+            ]
+        }
+    }
 }

@@ -78,7 +78,7 @@ struct CocktailDetailView: View {
                             .frame(height: 20)
                         Picker("Section", selection: $viewModel.sectionSelected) {
                             ForEach(viewModel.sectionsOptions, id: \.self) {
-                                Text($0)
+                                Text($0.rawValue)
                             }
                         }
                         .pickerStyle(.segmented)

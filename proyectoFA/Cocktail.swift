@@ -6,7 +6,35 @@
 //
 
 import SwiftUI
+struct CocktailList:Identifiable, Hashable {
+    var id = UUID()
+    var image: String
+    var name: String
+    
+}
+struct CocktailListModel{
+    let section1: [CocktailList] = [
+        CocktailList(image: "drink1", name: "Mojito"),
+        CocktailList(image: "drink2", name: "Mojito"),
+        CocktailList(image: "drink3", name: "Mojito"),
+        CocktailList(image: "drink4", name: "Mojito"),
+    ]
+    let section2: [CocktailList] = [
+        CocktailList(image: "drink5", name: "Mojito"),
+        CocktailList(image: "drink6", name: "Mojito"),
+        CocktailList(image: "drink7", name: "Mojito"),
+        CocktailList(image: "drink8", name: "Mojito"),
+    ]
+    let section3: [CocktailList] = [
+        CocktailList(image: "drink9", name: "Mojito"),
+        CocktailList(image: "drink10", name: "Mojito"),
+        CocktailList(image: "drink11", name: "Mojito"),
+        CocktailList(image: "drink12", name: "Mojito"),
+    ]
+}
+
 struct Cocktail: View {
+    let viewModel = CocktailListModel()
     var body: some View {
         VStack{
             Text("MIXOLOGICAL")
@@ -15,196 +43,68 @@ struct Cocktail: View {
             
             
             ScrollView {
-                VStack {
-                    
-                    ScrollView(.horizontal) {
-                        HStack {
-                            // Contenido Horizontal
-                            
-                            NavigationLink(destination: CocktailDetailView()) {
-                                VStack {
-                                    
-                                    Image("drink1")
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: UIScreen.main.bounds.width, height: 200)
-                                    
-                                    Text("Mojito")
-                                        .font(.caption)
-                                        .foregroundColor(.black)
+                VStack{
+                    ScrollView(.horizontal){
+                        HStack{
+                            ForEach(viewModel.section1){ cocktail in
+                                NavigationLink(destination: CocktailDetailView()){
+                                    VStack {
+                                        Image(cocktail.image)
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(width: UIScreen.main.bounds.width, height: 200)
+                                        Text(cocktail.name)
+                                            .font(.caption)
+                                            .foregroundColor(.black)
+                                    }
                                 }
-                            }
-                            
-                            NavigationLink(destination: CocktailDetailView()) {
-                                VStack {
-                                    
-                                    Image("drink2")
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: UIScreen.main.bounds.width, height: 200)
-                                    
-                                    Text("Mezcal")
-                                        .font(.caption)
-                                        .foregroundColor(.black)
-                                }
-                            }
-                            NavigationLink(destination: CocktailDetailView()) {
-                                VStack {
-                                    
-                                    Image("drink3")
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: UIScreen.main.bounds.width, height: 200)
-                                    
-                                    Text("Gin")
-                                        .font(.caption)
-                                        .foregroundColor(.black)
-                                }
-                            }
-                            
-                            NavigationLink(destination: CocktailDetailView()) {
-                                VStack {
-                                    
-                                    Image("drink4")
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: UIScreen.main.bounds.width, height: 200)
-                                    
-                                    Text("Ron")
-                                        .font(.caption)
-                                        .foregroundColor(.black)
-                                }
+                                
                             }
                         }
-                        
+                    }
+                    ScrollView(.horizontal){
+                        HStack{
+                            ForEach(viewModel.section2){ cocktail in
+                                NavigationLink(destination: CocktailDetailView()){
+                                    VStack {
+                                        Image(cocktail.image)
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(width: UIScreen.main.bounds.width, height: 200)
+                                        Text(cocktail.name)
+                                            .font(.caption)
+                                            .foregroundColor(.black)
+                                    }
+                                }
+                                
+                            }
+                        }
+                    }
+                    ScrollView(.horizontal){
+                        HStack{
+                            ForEach(viewModel.section3){ cocktail in
+                                NavigationLink(destination: CocktailDetailView()){
+                                    VStack {
+                                        Image(cocktail.image)
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(width: UIScreen.main.bounds.width, height: 200)
+                                        Text(cocktail.name)
+                                            .font(.caption)
+                                            .foregroundColor(.black)
+                                    }                 
+
+                                }
+                                
+                            }
+                        }
                     }
                     
-                    ScrollView(.horizontal) {
-                        HStack {
-                            // Contenido Horizontal
-                            NavigationLink(destination: CocktailDetailView()) {
-                                VStack {
-                                    
-                                    Image("drink5")
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: UIScreen.main.bounds.width, height: 200)
-                                    
-                                    Text("Mojito")
-                                        .font(.caption)
-                                        .foregroundColor(.black)
-                                }
-                            }
-                            
-                            NavigationLink(destination: CocktailDetailView()) {
-                                VStack {
-                                    
-                                    Image("drink6")
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: UIScreen.main.bounds.width, height: 200)
-                                    
-                                    Text("Mezcal")
-                                        .font(.caption)
-                                        .foregroundColor(.black)
-                                }
-                            }
-                            NavigationLink(destination: CocktailDetailView()) {
-                                VStack {
-                                    
-                                    Image("drink7")
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: UIScreen.main.bounds.width, height: 200)
-                                    
-                                    Text("Gin")
-                                        .font(.caption)
-                                        .foregroundColor(.black)
-                                }
-                            }
-                            
-                            NavigationLink(destination: CocktailDetailView()) {
-                                VStack {
-                                    
-                                    Image("drink8")
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: UIScreen.main.bounds.width, height: 200)
-                                    
-                                    Text("Ron")
-                                        .font(.caption)
-                                        .foregroundColor(.black)
-                                }
-                            }
-                        }
-                        
-                    }
-                    ScrollView(.horizontal) {
-                        HStack {
-                            // Contenido Horizontal
-                            NavigationLink(destination: CocktailDetailView()) {
-                                VStack {
-                                    
-                                    Image("drink9")
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: UIScreen.main.bounds.width, height: 200)
-                                    
-                                    Text("Mojito")
-                                        .font(.caption)
-                                        .foregroundColor(.black)
-                                }
-                            }
-                            
-                            NavigationLink(destination: CocktailDetailView()) {
-                                VStack {
-                                    
-                                    Image("drink10")
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: UIScreen.main.bounds.width, height: 200)
-                                    
-                                    Text("Mezcal")
-                                        .font(.caption)
-                                        .foregroundColor(.black)
-                                }
-                            }
-                            NavigationLink(destination: CocktailDetailView()) {
-                                VStack {
-                                    
-                                    Image("drink11")
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: UIScreen.main.bounds.width, height: 200)
-                                    
-                                    Text("Carajillo")
-                                        .font(.caption)
-                                        .foregroundColor(.black)
-                                }
-                            }
-                            
-                            NavigationLink(destination: CocktailDetailView()) {
-                                VStack {
-                                    
-                                    Image("drink12")
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: UIScreen.main.bounds.width, height: 200)
-                                    
-                                    Text("Ron")
-                                        .font(.caption)
-                                        .foregroundColor(.black)
-                                }
-                            }
-                        }
-                    }
                 }
             }
         }
     }
 }
-
-
 struct Cocktail_Previews: PreviewProvider {
     static var previews: some View {
         return Group {

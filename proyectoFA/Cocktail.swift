@@ -10,8 +10,8 @@ struct CocktailList:Identifiable, Hashable {
     var id = UUID()
     var image: String
     var name: String
-    
 }
+
 struct CocktailListModel{
     let section1: [CocktailList] = [
         CocktailList(image: "drink1", name: "Mojito"),

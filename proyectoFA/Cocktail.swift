@@ -47,7 +47,7 @@ struct Cocktail: View {
                     ScrollView(.horizontal){
                         HStack{
                             ForEach(viewModel.section1){ cocktail in
-                                NavigationLink(destination: CocktailDetail()){
+                                NavigationLink(destination: CocktailDetailView()){
                                     VStack {
                                         Image(cocktail.image)
                                             .resizable()
@@ -57,8 +57,6 @@ struct Cocktail: View {
                                             .font(.caption)
                                             .foregroundColor(.black)
                                     }
-                                    
-                                    
                                 }
                                 
                             }
@@ -67,7 +65,7 @@ struct Cocktail: View {
                     ScrollView(.horizontal){
                         HStack{
                             ForEach(viewModel.section2){ cocktail in
-                                NavigationLink(destination: CocktailDetail()){
+                                NavigationLink(destination: CocktailDetailView()){
                                     VStack {
                                         Image(cocktail.image)
                                             .resizable()
@@ -77,8 +75,6 @@ struct Cocktail: View {
                                             .font(.caption)
                                             .foregroundColor(.black)
                                     }
-                                    
-                                    
                                 }
                                 
                             }
@@ -87,7 +83,7 @@ struct Cocktail: View {
                     ScrollView(.horizontal){
                         HStack{
                             ForEach(viewModel.section3){ cocktail in
-                                NavigationLink(destination: CocktailDetail()){
+                                NavigationLink(destination: CocktailDetailView()){
                                     VStack {
                                         Image(cocktail.image)
                                             .resizable()
@@ -96,9 +92,8 @@ struct Cocktail: View {
                                         Text(cocktail.name)
                                             .font(.caption)
                                             .foregroundColor(.black)
-                                    }
-                                    
-                                    
+                                    }                 
+
                                 }
                                 
                             }

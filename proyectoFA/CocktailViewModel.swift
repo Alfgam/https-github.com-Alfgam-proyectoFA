@@ -61,9 +61,8 @@ struct CocktailListModel{
                       ],
                       image:"drink6"
                      ),
-        
-CocktailModel(name: "Margarita", ingredients: [], receip: "", tags: [], image: "drink7"),
-CocktailModel(name: "Bloody Mary", ingredients: [], receip: "", tags: [], image: "drink8")
+        CocktailModel(name: "Margarita", ingredients: [], receip: "", tags: [], image: "drink7"),
+        CocktailModel(name: "Bloody Mary", ingredients: [], receip: "", tags: [], image: "drink8")
     ]
     let section3: [CocktailModel] = [
         
@@ -96,6 +95,8 @@ CocktailModel(name: "Bloody Mary", ingredients: [], receip: "", tags: [], image:
                         "Highball glass"
                       ],
                       image:"drink10"
-                     )
+                     ),
+        CocktailModel(name: "Carajillo", ingredients: [], receip: "", tags: [], image: "drink11"),
+        CocktailModel(name: "Mezcal", ingredients: [], receip: "", tags: [], image: "drink12")
     ]
 }

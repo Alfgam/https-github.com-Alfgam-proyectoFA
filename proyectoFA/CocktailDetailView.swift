@@ -6,20 +6,6 @@
 //
 import SwiftUI
 
-// Modelo para representar un ingrediente en un cóctel
-struct Details: Identifiable, Hashable {
-    var name: String
-    let id = UUID()
-}
-
-// Modelo para representar un cóctel
-struct CocktailModel {
-    var name: String
-    var ingredients: [Details]
-    var receip: String
-    var tags: [String]
-}
-
 // Vista que muestra los detalles de un cóctel, incluyendo su imagen, ingredientes, receta y etiquetas
 struct CocktailDetailView: View {
     

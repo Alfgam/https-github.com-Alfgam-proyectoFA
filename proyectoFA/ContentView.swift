@@ -67,7 +67,7 @@ struct ContentView: View {
                     
                 }
                 
-                NavigationLink(destination: Cocktail()) {
+                NavigationLink(destination: CocktailView()) {
                                    Text("Iniciar Sesión")
                                        .frame(maxWidth: .infinity)
                                        .padding()

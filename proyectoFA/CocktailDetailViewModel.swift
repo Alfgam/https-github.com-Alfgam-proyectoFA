@@ -7,12 +7,6 @@
 
 import Foundation
 
-enum SectionOption: String {
-    case ingredient = "Ingredients"
-    case receipt = "Receipt"
-    case history = "History"
-}
-
 class CocktailDetailViewModel: ObservableObject {
     
     // Estado para gestionar la selección de las pestañas

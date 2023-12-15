@@ -9,7 +9,11 @@ import SwiftUI
 // Vista que muestra los detalles de un cóctel, incluyendo su imagen, ingredientes, receta y etiquetas
 struct CocktailDetailView: View {
     
-    @StateObject private var viewModel: CocktailDetailViewModel = CocktailDetailViewModel()
+    @StateObject private var viewModel: CocktailDetailViewModel
+    
+    internal init(cocktail: CocktailModel) {
+        _viewModel = StateObject(wrappedValue: CocktailDetailViewModel(cocktail: cocktail))
+    }
     
     var body: some View {
         GeometryReader { geometry in
@@ -18,7 +22,7 @@ struct CocktailDetailView: View {
                 VStack {
                     // Encabezado con imagen y nombre del cóctel
                     ZStack {
-                        Image("Drink", bundle: nil)
+                        Image(viewModel.cocktail.image, bundle: nil)
                             .resizable()
                             .scaledToFill()
                             .frame(maxWidth: .infinity, maxHeight: geometry.size.height * 2 / 5)
@@ -117,7 +121,7 @@ struct CocktailDetailView: View {
 
 struct CocktailDetail_Previews: PreviewProvider {
     static var previews: some View {
-        return CocktailDetailView()
+        return CocktailDetailView(cocktail: .init(name: "", ingredients: [], receip: "", tags: [], image: ""))
     }
 }
 

@@ -21,7 +21,7 @@ struct CocktailView: View {
                     ScrollView(.horizontal){
                         HStack{
                             ForEach(viewModel.section1){ cocktail in
-                                NavigationLink(destination: CocktailDetailView()){
+                                NavigationLink(destination: CocktailDetailView(cocktail: cocktail)){
                                     VStack {
                                         Image(cocktail.image)
                                             .resizable()
@@ -39,7 +39,7 @@ struct CocktailView: View {
                     ScrollView(.horizontal){
                         HStack{
                             ForEach(viewModel.section2){ cocktail in
-                                NavigationLink(destination: CocktailDetailView()){
+                                NavigationLink(destination: CocktailDetailView(cocktail: cocktail)){
                                     VStack {
                                         Image(cocktail.image)
                                             .resizable()
@@ -57,7 +57,7 @@ struct CocktailView: View {
                     ScrollView(.horizontal){
                         HStack{
                             ForEach(viewModel.section3){ cocktail in
-                                NavigationLink(destination: CocktailDetailView()){
+                                NavigationLink(destination: CocktailDetailView(cocktail: cocktail)){
                                     VStack {
                                         Image(cocktail.image)
                                             .resizable()

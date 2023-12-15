@@ -7,12 +7,6 @@
 
 import Foundation
 
-struct CocktailList:Identifiable, Hashable {
-    var id = UUID()
-    var image: String
-    var name: String
-}
-
 // Modelo para representar un ingrediente en un cóctel
 struct Details: Identifiable, Hashable {
     var name: String
@@ -20,11 +14,13 @@ struct Details: Identifiable, Hashable {
 }
 
 // Modelo para representar un cóctel
-struct CocktailModel {
+struct CocktailModel: Identifiable, Hashable {
+    var id = UUID()
     var name: String
     var ingredients: [Details]
     var receip: String
     var tags: [String]
+    var image: String
 }
 
 enum SectionOption: String {

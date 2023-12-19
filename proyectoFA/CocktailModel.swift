@@ -21,6 +21,7 @@ struct CocktailModel: Identifiable, Hashable {
     var receip: String
     var tags: [String]
     var image: String
+    var history: String
 }
 
 enum SectionOption: String {

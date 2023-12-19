@@ -7,10 +7,9 @@
 
 import Foundation
 
-
-struct CocktailListModel{
+struct CocktailListModel {
     
-    let section1: [CocktailModel] = [
+    var section1: [CocktailModel] = [
         CocktailModel(name: "Mojito",
                       ingredients: [
                         .init(name: "60 ml de ron blanco"),
@@ -29,7 +28,7 @@ struct CocktailListModel{
         CocktailModel(name: "Whisky", ingredients: [], receip: "", tags: [], image: "drink3"),
         CocktailModel(name: "Negroni", ingredients: [], receip: "", tags: [], image: "drink4")
     ]
-    let section2: [CocktailModel] = [
+    var section2: [CocktailModel] = [
         
         CocktailModel(name: "Manhattan",
                       ingredients: [
@@ -64,39 +63,48 @@ struct CocktailListModel{
         CocktailModel(name: "Margarita", ingredients: [], receip: "", tags: [], image: "drink7"),
         CocktailModel(name: "Bloody Mary", ingredients: [], receip: "", tags: [], image: "drink8")
     ]
-    let section3: [CocktailModel] = [
+    var section3: [CocktailModel]
+    
+    init() {
+        var cocktail: CocktailModel = CocktailModel(
+            ingredients: [
+                .init(name: "60 ml de ron blanco"),
+                .init(name: "60 ml de leche de coco"),
+                .init(name: "60 ml de zumo de piña"),
+                .init(name: "15 ml de zumo de lima"),
+                .init(name: "22 ml de sirope de azúcar"),
+            ],
+            tags: [
+                "Alcoholic",
+                "Cocktail",
+                "Highball glass"
+            ]
+        )
         
-        CocktailModel(name: "Gin",
-                      ingredients: [
-                        .init(name: "60 ml de ron blanco"),
-                        .init(name: "60 ml de leche de coco"),
-                        .init(name: "60 ml de zumo de piña"),
-                        .init(name: "15 ml de zumo de lima"),
-                        .init(name: "22 ml de sirope de azúcar"),
-                      ],
-                      receip: "En una batidora de vaso (si no tienes se puede usar de mano) mezcla una parte de ron blanco, una parte de crema o leche de coco y una de zumo de piña, preferiblemente natural. Si usas uno comercial evita el nectar, que tiene más azúcares. Añade zumo de lima (15 ml) y, si no has usado una leche de coco o un zumo que lleve azúcar añadido, 22 ml de sirope de azúcar. Se mezcla todo en la batidora con unos 180 ml de hielo picado hasta lograr la consistencia de un batido y se sirve en una de piña colada (aunque se puede poner en cualquier vaso alto y ancho). La decoración clásica del cóctel manda presentarlo con un trozo de piña natural, una sombrilla y una pajita", tags: [
-                        "Alcoholic",
-                        "Cocktail",
-                        "Highball glass"
-                      ],
-                      image:"drink9"
-                     ),
-        CocktailModel(name: "Piña Colada",
-                      ingredients: [
-                        .init(name: "60 ml de ron blanco"),
-                        .init(name: "60 ml de leche de coco"),
-                        .init(name: "60 ml de zumo de piña"),
-                        .init(name: "15 ml de zumo de lima"),
-                        .init(name: "22 ml de sirope de azúcar"),
-                      ],
-                      receip: "En una batidora de vaso (si no tienes se puede usar de mano) mezcla una parte de ron blanco, una parte de crema o leche de coco y una de zumo de piña, preferiblemente natural. Si usas uno comercial evita el nectar, que tiene más azúcares. Añade zumo de lima (15 ml) y, si no has usado una leche de coco o un zumo que lleve azúcar añadido, 22 ml de sirope de azúcar. Se mezcla todo en la batidora con unos 180 ml de hielo picado hasta lograr la consistencia de un batido y se sirve en una de piña colada (aunque se puede poner en cualquier vaso alto y ancho). La decoración clásica del cóctel manda presentarlo con un trozo de piña natural, una sombrilla y una pajita", tags: [
-                        "Alcoholic",
-                        "Cocktail",
-                        "Highball glass"
-                      ],
-                      image:"drink10"
-                     ),
-        CocktailModel(name: "Carajillo", ingredients: [], receip: "", tags: [], image: "drink11"),
-        CocktailModel(name: "Mezcal", ingredients: [], receip: "", tags: [], image: "drink12")
-    ]
+        cocktail.receip = "Test"
+        
+        
+        section3 = [
+            cocktail, cocktail, cocktail
+        ]
+    }
+    
+    /*
+    mutating func requestInfoFromBackend() {
+        section3 = [
+            CocktailModel(
+                name: "Carajillo",
+                ingredients: [
+                    .init(name: "30 ml cafe expreso"),
+                    .init(name: "30 ml licor del 43")
+                ],
+                tags: [
+                    "Alcoholic",
+                    "Cocktail",
+                    "Cafe"
+                ]
+            )
+        ]
+    }
+     */
 }

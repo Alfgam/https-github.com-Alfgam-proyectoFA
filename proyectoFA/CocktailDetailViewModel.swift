@@ -32,7 +32,7 @@ class CocktailDetailViewModel: ObservableObject {
             details = cocktail.ingredients
         case .receipt:
             details = [
-                Details(name: cocktail.receip)
+                Details(name: cocktail.receip ?? "Valor default")
             ]
         case .history:
             details = [

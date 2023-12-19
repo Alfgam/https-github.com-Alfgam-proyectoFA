@@ -15,12 +15,21 @@ struct Details: Identifiable, Hashable {
 
 // Modelo para representar un cóctel
 struct CocktailModel: Identifiable, Hashable {
-    var id = UUID()
-    var name: String
+    let id = UUID()
+    let name: String
     var ingredients: [Details]
-    var receip: String
+    var receip: String?
     var tags: [String]
-    var image: String
+    let image: String?
+    
+    init(name: String = "Bebida", ingredients: [Details], receip: String? = nil, tags: [String], image: String? = nil) {
+        self.name = name
+        self.ingredients = ingredients
+        self.receip = receip
+        self.tags = tags
+        self.image = image
+    }
+    
 }
 
 enum SectionOption: String {

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CocktailView: View {
-    let viewModel = CocktailListModel()
+    var viewModel = CocktailListModel()
     var body: some View {
         VStack{
             Text("MIXOLOGICAL")
@@ -23,7 +23,7 @@ struct CocktailView: View {
                             ForEach(viewModel.section1){ cocktail in
                                 NavigationLink(destination: CocktailDetailView(cocktail: cocktail)){
                                     VStack {
-                                        Image(cocktail.image)
+                                        Image(cocktail.image ?? "drink1")
                                             .resizable()
                                             .scaledToFit()
                                             .frame(width: UIScreen.main.bounds.width, height: 200)
@@ -41,7 +41,7 @@ struct CocktailView: View {
                             ForEach(viewModel.section2){ cocktail in
                                 NavigationLink(destination: CocktailDetailView(cocktail: cocktail)){
                                     VStack {
-                                        Image(cocktail.image)
+                                        Image(cocktail.image ?? "drink1")
                                             .resizable()
                                             .scaledToFit()
                                             .frame(width: UIScreen.main.bounds.width, height: 200)
@@ -59,7 +59,7 @@ struct CocktailView: View {
                             ForEach(viewModel.section3){ cocktail in
                                 NavigationLink(destination: CocktailDetailView(cocktail: cocktail)){
                                     VStack {
-                                        Image(cocktail.image)
+                                        Image(cocktail.image ?? "drink1")
                                             .resizable()
                                             .scaledToFit()
                                             .frame(width: UIScreen.main.bounds.width, height: 200)
@@ -73,7 +73,12 @@ struct CocktailView: View {
                             }
                         }
                     }
-                    
+                    Button {
+                        //viewModel.requestInfoFromBackend()
+                    } label: {
+                        Text("Actualizar")
+                    }
+
                 }
             }
         }

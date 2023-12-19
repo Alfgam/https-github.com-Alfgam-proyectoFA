@@ -22,7 +22,7 @@ struct CocktailDetailView: View {
                 VStack {
                     // Encabezado con imagen y nombre del cóctel
                     ZStack {
-                        Image(viewModel.cocktail.image, bundle: nil)
+                        Image(viewModel.cocktail.image ?? "drink1", bundle: nil)
                             .resizable()
                             .scaledToFill()
                             .frame(maxWidth: .infinity, maxHeight: geometry.size.height * 2 / 5)

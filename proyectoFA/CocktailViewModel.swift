@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CocktailListModel {
+class CocktailListModel: ObservableObject {
     
     var section1: [CocktailModel] = [
         CocktailModel(name: "Mojito",
@@ -75,9 +75,8 @@ struct CocktailListModel {
         
         
     ]
+    
     var section2: [CocktailModel] = [
-
-        
         CocktailModel(name: "Manhattan",
                       ingredients: [
                         .init(name: "60 ml de bourbon"),
@@ -115,7 +114,8 @@ struct CocktailListModel {
         CocktailModel(name: "Margarita", ingredients: [], receip: "", tags: [], image: "drink7"),
         CocktailModel(name: "Bloody Mary", ingredients: [], receip: "", tags: [], image: "drink8")
     ]
-    var section3: [CocktailModel]
+    
+    @Published var section3: [CocktailModel]
     
     init() {
         var cocktail: CocktailModel = CocktailModel(
@@ -130,7 +130,8 @@ struct CocktailListModel {
                 "Alcoholic",
                 "Cocktail",
                 "Highball glass"
-            ]
+            ],
+            image: "drink5"
         )
         
         cocktail.receip = "Test"
@@ -141,8 +142,7 @@ struct CocktailListModel {
         ]
     }
     
-    /*
-    mutating func requestInfoFromBackend() {
+    func requestInfoFromBackend() {
         section3 = [
             CocktailModel(
                 name: "Carajillo",
@@ -158,6 +158,4 @@ struct CocktailListModel {
             )
         ]
     }
-     */
-
 }

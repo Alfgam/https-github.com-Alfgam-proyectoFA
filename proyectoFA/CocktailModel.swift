@@ -23,14 +23,14 @@ struct CocktailModel: Identifiable, Hashable {
     let image: String?
     var history: String
   
-    init(name: String = "Bebida", ingredients: [Details], receip: String? = nil, tags: [String], image: String? = nil) {
+    init(name: String = "Bebida", ingredients: [Details], receip: String? = nil, tags: [String], image: String? = nil, history: String = "") {
         self.name = name
         self.ingredients = ingredients
         self.receip = receip
         self.tags = tags
         self.image = image
+        self.history = history
     } 
-
 }
 
 enum SectionOption: String {

@@ -121,7 +121,7 @@ struct CocktailDetailView: View {
 
 struct CocktailDetail_Previews: PreviewProvider {
     static var previews: some View {
-        return CocktailDetailView(cocktail: .init(name: "", ingredients: [], receip: "", tags: [], image: ""))
+        return CocktailDetailView(cocktail: .init(name: "", ingredients: [], receip: "", tags: [], image: "",history: ""))
     }
 }
 

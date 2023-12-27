@@ -6,11 +6,11 @@
 //
 import Foundation
 
-struct CocktailListModel {
+class CocktailListModel: ObservableObject {
     
-    var section1: [CocktailModel]
-    var section2: [CocktailModel]
-    var section3: [CocktailModel]
+    @Published var section1: [CocktailModel]
+    @Published var section2: [CocktailModel]
+    @Published var section3: [CocktailModel]
     
     init() {
         var cocktail1 = CocktailModel(
@@ -48,6 +48,7 @@ struct CocktailListModel {
             ]
         )
         
+
         cocktail2.receip = "Test"
         
         section2 = [cocktail2, cocktail2, cocktail2]
@@ -55,6 +56,7 @@ struct CocktailListModel {
         
         var cocktail3 = CocktailModel(
             
+
             ingredients: [
                 .init(name: "60 ml de ron blanco"),
                 .init(name: "60 ml de leche de coco"),
@@ -66,17 +68,18 @@ struct CocktailListModel {
                 "Alcoholic",
                 "Cocktail",
                 "Highball glass"
-            ]
+            ],
+            image: "drink5"
         )
         
         cocktail3.receip = "Test"
         
         section3 = [cocktail3, cocktail3, cocktail3]
     }
-}
 
-    /*
-    mutating func requestInfoFromBackend() {
+    
+    func requestInfoFromBackend() {
+      
         section3 = [
             CocktailModel(
                 name: "Carajillo",
@@ -92,6 +95,5 @@ struct CocktailListModel {
             )
         ]
     }
-     */
 
-
+}

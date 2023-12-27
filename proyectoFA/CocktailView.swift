@@ -8,14 +8,12 @@
 import SwiftUI
 
 struct CocktailView: View {
-    var viewModel = CocktailListModel()
+    @StateObject var viewModel = CocktailListModel()
     var body: some View {
         VStack{
             Text("MIXOLOGICAL")
                 .font(.headline)
                 .foregroundColor(.black)
-            
-            
             ScrollView {
                 VStack{
                     ScrollView(.horizontal){
@@ -74,7 +72,7 @@ struct CocktailView: View {
                         }
                     }
                     Button {
-                        //viewModel.requestInfoFromBackend()
+                        viewModel.requestInfoFromBackend()
                     } label: {
                         Text("Actualizar")
                     }

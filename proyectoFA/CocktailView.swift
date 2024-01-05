@@ -72,7 +72,9 @@ struct CocktailView: View {
                         }
                     }
                     Button {
-                        viewModel.requestInfoFromBackend()
+                        Task {
+                            await viewModel.requestInfoFromBackend()
+                        }
                     } label: {
                         Text("Actualizar")
                     }

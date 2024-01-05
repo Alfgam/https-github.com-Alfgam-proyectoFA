@@ -77,9 +77,13 @@ class CocktailListModel: ObservableObject {
         section3 = [cocktail3, cocktail3, cocktail3]
     }
 
-    
-    func requestInfoFromBackend() {
-      
+    func requestInfoFromBackend() async -> Void {
+        do {
+            let recipes = try await NetworkingLayer().getRecipes()
+            print(recipes)
+        } catch {
+            print("fail")
+        }
         section3 = [
             CocktailModel(
                 name: "Carajillo",
@@ -95,5 +99,4 @@ class CocktailListModel: ObservableObject {
             )
         ]
     }
-
 }

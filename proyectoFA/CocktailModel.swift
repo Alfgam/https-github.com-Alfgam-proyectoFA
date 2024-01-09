@@ -8,29 +8,46 @@
 import Foundation
 
 // Modelo para representar un ingrediente en un cóctel
-struct Details: Identifiable, Hashable {
+struct Details: Decodable, Identifiable, Hashable {
     var name: String
     let id = UUID()
 }
 
+struct CocktailsResponse: Decodable {
+    
+    let cocktails: [CocktailModel]
+}
+
 // Modelo para representar un cóctel
-struct CocktailModel: Identifiable, Hashable {
-    let id = UUID()
+struct CocktailModel: Decodable, Identifiable, Hashable {
+    var id: String
     let name: String
-    var ingredients: [Details]
-    var receip: String?
+    var ingredients: [String]
+    var receip: [String]?
     var tags: [String]
     let image: String?
     var history: String
   
-    init(name: String = "Bebida", ingredients: [Details], receip: String? = nil, tags: [String], image: String? = nil, history: String = "") {
+    init(id: String? = nil, name: String = "Bebida", ingredients: [String], receip: [String]? = nil, tags: [String], image: String? = nil, history: String = "") {
+        self.id = id ?? name
         self.name = name
         self.ingredients = ingredients
         self.receip = receip
         self.tags = tags
         self.image = image
         self.history = history
-    } 
+    }
+    
+    // Enum para personalizar las claves
+    private enum CodingKeys: String, CodingKey {
+        case id = "id"
+        case name = "name"
+        case ingredients = "ingredients"
+        case receip = "recipet"
+        case tags = "tags"
+        case image = "image"
+        case history = "history"
+    }
 }
 
 enum SectionOption: String {

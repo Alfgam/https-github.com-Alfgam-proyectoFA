@@ -9,13 +9,12 @@ import Foundation
 
 class NetworkingLayer {
     
-    func getRecipes() async throws -> String {
+    func getRecipes() async throws -> CocktailsResponse {
         let myEndpoint: String = "https://fastapi-production-6595.up.railway.app/recipes"
         let url = URL(string: myEndpoint)
         let request = URLRequest(url: url!)
-        let (data, response) = try await URLSession.shared.data(for: request)
-        let result = String(bytes: data, encoding: .utf8)
-        //let result = try JSONDecoder().decode(String.self, from: data)
-        return result ?? "empty"
+        let (data, _) = try await URLSession.shared.data(for: request)
+        let result = try JSONDecoder().decode(CocktailsResponse.self, from: data)
+        return result
     }
 }

@@ -20,7 +20,7 @@ struct CocktailsResponse: Decodable {
 
 // Modelo para representar un cóctel
 struct CocktailModel: Decodable, Identifiable, Hashable {
-    var id: String
+    var id: Int
     let name: String
     var ingredients: [String]
     var receip: [String]?
@@ -28,8 +28,8 @@ struct CocktailModel: Decodable, Identifiable, Hashable {
     let image: String?
     var history: String
   
-    init(id: String? = nil, name: String = "Bebida", ingredients: [String], receip: [String]? = nil, tags: [String], image: String? = nil, history: String = "") {
-        self.id = id ?? name
+    init(id: Int? = nil, name: String = "Bebida", ingredients: [String], receip: [String]? = nil, tags: [String], image: String? = nil, history: String = "") {
+        self.id = id ?? 0
         self.name = name
         self.ingredients = ingredients
         self.receip = receip

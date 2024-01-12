@@ -78,6 +78,14 @@ struct CocktailView: View {
                     } label: {
                         Text("Actualizar")
                     }
+                    
+                    Button {
+                        Task {
+                            await viewModel.addNewCocktail()
+                        }
+                    } label: {
+                        Text("Crear uno nuevo")
+                    }
 
                 }
             }

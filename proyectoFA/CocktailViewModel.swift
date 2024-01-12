@@ -72,9 +72,20 @@ class CocktailListModel: ObservableObject {
     func requestInfoFromBackend() async -> Void {
         do {
             let recipes = try await NetworkingLayer().getRecipes()
-            section3 = recipes.cocktails
+            section3 = recipes
         } catch {
-            print("fail")
+            print("fail obtained all cocktails")
+        }
+    }
+    
+    func addNewCocktail() async -> Void {
+        do {
+            let recipeCreated = try await NetworkingLayer().addCocktail(name: "Alfonso 13")
+            if recipeCreated {
+                await self.requestInfoFromBackend()
+            }
+        } catch {
+            print("fail creating a new cocktail")
         }
     }
 }

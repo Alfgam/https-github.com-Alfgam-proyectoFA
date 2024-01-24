@@ -22,18 +22,20 @@ class CocktailDetailViewModel: ObservableObject {
     @Published var cocktail: CocktailModel
     
     init(cocktail: CocktailModel){
-        details = cocktail.ingredients
+        //details = cocktail.ingredients
+        self.details = []
         self.cocktail = cocktail
     }
     
     private func changeSelection(sectionSelected: SectionOption) {
         switch sectionSelected {
         case .ingredient:
-            details = cocktail.ingredients
+            details = []
         case .receipt:
-            details = [
-                Details(name: cocktail.receip ?? "Valor default")
-            ]
+            details = []
+            for receip in cocktail.receip ?? [] {
+                details.append(.init(name: receip))
+            }
         case .history:
             details = [
                 .init(name: "Una breve descripción de la historia de la piña colada")

@@ -15,11 +15,11 @@ class CocktailListModel: ObservableObject {
     init() {
         var cocktail1 = CocktailModel(
             ingredients: [
-                .init(name: "60 ml de ron blanco"),
-                .init(name: "60 ml de leche de coco"),
-                .init(name: "60 ml de zumo de piña"),
-                .init(name: "15 ml de zumo de lima"),
-                .init(name: "22 ml de sirope de azúcar"),
+                "60 ml de ron blanco",
+                "60 ml de leche de coco",
+                "60 ml de zumo de piña",
+                "15 ml de zumo de lima",
+                "22 ml de sirope de azúcar",
             ],
             tags: [
                 "Alcoholic",
@@ -28,18 +28,17 @@ class CocktailListModel: ObservableObject {
             ]
         )
         
-        cocktail1.receip = "Test"
+        cocktail1.receip = ["Test"]
         
         section1 = [cocktail1, cocktail1, cocktail1]
         
-        
         var cocktail2 = CocktailModel(
             ingredients: [
-                .init(name: "60 ml de ron blanco"),
-                .init(name: "60 ml de leche de coco"),
-                .init(name: "60 ml de zumo de piña"),
-                .init(name: "15 ml de zumo de lima"),
-                .init(name: "22 ml de sirope de azúcar"),
+                "60 ml de ron blanco",
+                "60 ml de leche de coco",
+                "60 ml de zumo de piña",
+                "15 ml de zumo de lima",
+                "22 ml de sirope de azúcar",
             ],
             tags: [
                 "Alcoholic",
@@ -47,22 +46,15 @@ class CocktailListModel: ObservableObject {
                 "Highball glass"
             ]
         )
-        
-
-        cocktail2.receip = "Test"
-        
+        cocktail2.receip = ["Test"]
         section2 = [cocktail2, cocktail2, cocktail2]
-        
-        
         var cocktail3 = CocktailModel(
-            
-
             ingredients: [
-                .init(name: "60 ml de ron blanco"),
-                .init(name: "60 ml de leche de coco"),
-                .init(name: "60 ml de zumo de piña"),
-                .init(name: "15 ml de zumo de lima"),
-                .init(name: "22 ml de sirope de azúcar"),
+                "60 ml de ron blanco",
+                "60 ml de leche de coco",
+                "60 ml de zumo de piña",
+                "15 ml de zumo de lima",
+                "22 ml de sirope de azúcar",
             ],
             tags: [
                 "Alcoholic",
@@ -72,28 +64,28 @@ class CocktailListModel: ObservableObject {
             image: "drink5"
         )
         
-        cocktail3.receip = "Test"
+        cocktail3.receip = ["Test"]
         
         section3 = [cocktail3, cocktail3, cocktail3]
     }
 
-    
-    func requestInfoFromBackend() {
-      
-        section3 = [
-            CocktailModel(
-                name: "Carajillo",
-                ingredients: [
-                    .init(name: "30 ml cafe expreso"),
-                    .init(name: "30 ml licor del 43")
-                ],
-                tags: [
-                    "Alcoholic",
-                    "Cocktail",
-                    "Cafe"
-                ]
-            )
-        ]
+    func requestInfoFromBackend() async -> Void {
+        do {
+            let recipes = try await NetworkingLayer().getRecipes()
+            section3 = recipes
+        } catch {
+            print("fail obtained all cocktails")
+        }
     }
-
+    
+    func addNewCocktail() async -> Void {
+        do {
+            let recipeCreated = try await NetworkingLayer().addCocktail(name: "Alfonso 13")
+            if recipeCreated {
+                await self.requestInfoFromBackend()
+            }
+        } catch {
+            print("fail creating a new cocktail")
+        }
+    }
 }

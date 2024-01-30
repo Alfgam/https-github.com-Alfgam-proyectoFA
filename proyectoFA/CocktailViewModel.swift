@@ -88,4 +88,18 @@ class CocktailListModel: ObservableObject {
             print("fail creating a new cocktail")
         }
     }
-}
+    func deleteCocktail() async -> Void {
+        do{
+            let recipeDelete = try await NetworkingLayer().deleteCocktail(cocktailID: 3)
+            if recipeDelete{
+                await self.requestInfoFromBackend()
+            }
+        }catch {
+                print("Fail delete")
+            
+            }
+            
+        }
+        
+    }
+

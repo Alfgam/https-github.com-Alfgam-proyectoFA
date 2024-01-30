@@ -54,4 +54,14 @@ class NetworkingLayer {
         let result = try JSONDecoder().decode(CocktailModel.self, from: data)
         return !result.name.isEmpty
     }
+    
+    func deleteCocktail(cocktailID: Int) async throws -> Bool {
+        let myEndpoint = "https://fastapi-production-6595.up.railway.app/cocktail/\(cocktailID)"
+        var request = URLRequest(url: URL(string: myEndpoint)!)
+        request.httpMethod = "DELETE"
+        
+        let (data, _) = try await URLSession.shared.data(for: request)
+        let result = try JSONDecoder().decode(DeleteCocktailModel.self, from: data)
+        return !result.message.isEmpty
+    }
 }

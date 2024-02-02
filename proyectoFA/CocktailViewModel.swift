@@ -88,4 +88,15 @@ class CocktailListModel: ObservableObject {
             print("fail creating a new cocktail")
         }
     }
+    
+    func updateCocktail() async -> Void {
+        do {
+            let recipeUpdated = try await NetworkingLayer().updateCocktail(id: "5")
+            if recipeUpdated {
+                await self.requestInfoFromBackend()
+            }
+        } catch {
+            print("fail updating this cocktail with error: \(error)")
+        }
+    }
 }

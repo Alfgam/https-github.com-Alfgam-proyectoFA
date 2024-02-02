@@ -90,8 +90,15 @@ struct CocktailView: View {
                         Task {
                             await viewModel.updateCocktail()
                         }
-                    } label: {
+                    } label : {
                         Text("Actualiza un cocktail")
+                    }
+                    Button {
+                        Task {
+                            await viewModel.deleteCocktail()
+                        }
+                    } label: {
+                        Text("Borrar un cocktail")
                     }
                 }
             }

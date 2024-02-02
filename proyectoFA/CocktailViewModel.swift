@@ -99,4 +99,16 @@ class CocktailListModel: ObservableObject {
             print("fail updating this cocktail with error: \(error)")
         }
     }
+    
+    func deleteCocktail() async -> Void {
+        do{
+            let recipeDelete = try await NetworkingLayer().deleteCocktail(cocktailID: 3)
+            if recipeDelete{
+                await self.requestInfoFromBackend()
+            }
+        }catch {
+                print("Fail delete")
+            }
+        }
+    }
 }

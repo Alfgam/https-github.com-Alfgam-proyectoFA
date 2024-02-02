@@ -55,3 +55,8 @@ enum SectionOption: String {
     case receipt = "Receipt"
     case history = "History"
 }
+struct DeleteCocktailModel: Decodable {
+    var message: String
+    
+
+}

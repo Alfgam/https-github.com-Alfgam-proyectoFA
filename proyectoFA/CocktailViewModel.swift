@@ -68,7 +68,7 @@ class CocktailListModel: ObservableObject {
         
         section3 = [cocktail3, cocktail3, cocktail3]
     }
-
+    
     func requestInfoFromBackend() async -> Void {
         do {
             let recipes = try await NetworkingLayer().getRecipes()
@@ -88,6 +88,18 @@ class CocktailListModel: ObservableObject {
             print("fail creating a new cocktail")
         }
     }
+    
+    func updateCocktail() async -> Void {
+        do {
+            let recipeUpdated = try await NetworkingLayer().updateCocktail(id: "5")
+            if recipeUpdated {
+                await self.requestInfoFromBackend()
+            }
+        } catch {
+            print("fail updating this cocktail with error: \(error)")
+        }
+    }
+    
     func deleteCocktail() async -> Void {
         do{
             let recipeDelete = try await NetworkingLayer().deleteCocktail(cocktailID: 3)
@@ -95,11 +107,7 @@ class CocktailListModel: ObservableObject {
                 await self.requestInfoFromBackend()
             }
         }catch {
-                print("Fail delete")
-            
-            }
-            
+            print("Fail delete")
         }
-        
     }
-
+}

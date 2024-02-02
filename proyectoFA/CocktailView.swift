@@ -64,10 +64,8 @@ struct CocktailView: View {
                                         Text(cocktail.name)
                                             .font(.caption)
                                             .foregroundColor(.black)
-                                    }                 
-
+                                    }
                                 }
-                                
                             }
                         }
                     }
@@ -76,9 +74,8 @@ struct CocktailView: View {
                             await viewModel.requestInfoFromBackend()
                         }
                     } label: {
-                        Text("Actualizar")
+                        Text("Traer lista de cocteles")
                     }
-                    
                     Button {
                         Task {
                             await viewModel.addNewCocktail()
@@ -101,6 +98,16 @@ struct CocktailView: View {
                         Text("Borrar un cocktail")
                     }
                 }
+            }
+        }
+        .toolbar {
+            ToolbarItemGroup(placement: .navigationBarTrailing) {
+                NavigationLink(
+                    destination: CreateCocktailView(),
+                    label: {
+                        Text("+🍹")
+                    }
+                )
             }
         }
     }

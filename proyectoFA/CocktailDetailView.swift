@@ -90,12 +90,14 @@ struct CocktailDetailView: View {
                         .frame(height: (geometry.size.height * 2  / 5) - 20 )
                     ScrollView(.horizontal, showsIndicators: false) {
                         // HStack para mostrar etiquetas
-                        HStack(spacing: 0) {
-                            ForEach(viewModel.cocktail.tags, id: \.self) { tag in
-                                Text(tag)
-                                    .font(.caption)
-                                    .foregroundColor(.black)
-                                    .frame(width: (geometry.size.width / CGFloat(viewModel.cocktail.tags.count)) - 20)
+                        if let tags = viewModel.cocktail.tags {
+                            HStack(spacing: 0) {
+                                ForEach(tags, id: \.self) { tag in
+                                    Text(tag)
+                                        .font(.caption)
+                                        .foregroundColor(.black)
+                                        .frame(width: (geometry.size.width / CGFloat(tags.count)) - 20)
+                                }
                             }
                         }
                     }

@@ -91,7 +91,7 @@ class CocktailListModel: ObservableObject {
     
     func updateCocktail() async -> Void {
         do {
-            let recipeUpdated = try await NetworkingLayer().updateCocktail(id: "5")
+            let recipeUpdated = try await NetworkingLayer().updateCocktail(id: "1")
             if recipeUpdated {
                 await self.requestInfoFromBackend()
             }

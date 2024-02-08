@@ -19,16 +19,16 @@ struct CocktailsResponse: Decodable {
 }
 
 // Modelo para representar un cóctel
-struct CocktailModel: Decodable, Identifiable, Hashable {
+struct CocktailModel: Decodable, Identifiable, Hashable, Encodable {
     var id: Int
     let name: String
     var ingredients: [String]
     var receip: [String]?
-    var tags: [String]
+    var tags: [String]?
     let image: String?
-    var history: String
+    var history: String?
   
-    init(id: Int? = nil, name: String = "Bebida", ingredients: [String], receip: [String]? = nil, tags: [String], image: String? = nil, history: String = "") {
+    init(id: Int? = nil, name: String = "Bebida", ingredients: [String], receip: [String]? = nil, tags: [String]? = nil, image: String? = nil, history: String = "") {
         self.id = id ?? 0
         self.name = name
         self.ingredients = ingredients

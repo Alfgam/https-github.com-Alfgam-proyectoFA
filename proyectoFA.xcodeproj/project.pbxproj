@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6E6372692B7467B5009C2C75 /* CreateCocktailDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6372682B7467B5009C2C75 /* CreateCocktailDetailView.swift */; };
 		6E9CFF162B156DA600FB2A50 /* proyectoFAApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E9CFF152B156DA600FB2A50 /* proyectoFAApp.swift */; };
 		6E9CFF182B156DA600FB2A50 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E9CFF172B156DA600FB2A50 /* ContentView.swift */; };
 		6E9CFF1A2B156DAA00FB2A50 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E9CFF192B156DAA00FB2A50 /* Assets.xcassets */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6E6372682B7467B5009C2C75 /* CreateCocktailDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCocktailDetailView.swift; sourceTree = "<group>"; };
 		6E9CFF122B156DA600FB2A50 /* proyectoFA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = proyectoFA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E9CFF152B156DA600FB2A50 /* proyectoFAApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = proyectoFAApp.swift; sourceTree = "<group>"; };
 		6E9CFF172B156DA600FB2A50 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 				AC7D421D2B2C075B00ECD755 /* CocktailModel.swift */,
 				ACFBC7B82B47B7AA004410DE /* NetworkingLayer.swift */,
 				ACC339722B6CA3D0003BF9BC /* CreateCocktailView.swift */,
+				6E6372682B7467B5009C2C75 /* CreateCocktailDetailView.swift */,
 			);
 			path = proyectoFA;
 			sourceTree = "<group>";
@@ -159,6 +162,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6E9CFF932B1EE3FE00FB2A50 /* CocktailDetailView.swift in Sources */,
+				6E6372692B7467B5009C2C75 /* CreateCocktailDetailView.swift in Sources */,
 				6E9CFF182B156DA600FB2A50 /* ContentView.swift in Sources */,
 				AC7D421C2B2C070500ECD755 /* CocktailViewModel.swift in Sources */,
 				AC3ECBB32B22DBE00090DD76 /* CocktailDetailViewModel.swift in Sources */,

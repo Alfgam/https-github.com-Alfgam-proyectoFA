@@ -99,7 +99,11 @@ struct CocktailView: View {
                     }
                 }
             }
+            .onAppear{ Task {
+                await viewModel.requestInfoFromBackend()
+            }}
         }
+    
         .toolbar {
             ToolbarItemGroup(placement: .navigationBarTrailing) {
                 NavigationLink(

@@ -7,7 +7,6 @@
 
 import Foundation
 
-// Modelo para representar un ingrediente en un cóctel
 struct Details: Decodable, Identifiable, Hashable {
     var name: String
     let id = UUID()

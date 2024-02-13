@@ -9,6 +9,27 @@ import Foundation
 
 class NetworkingLayer {
     
+    
+    
+    func editCocktail(cocktail: CocktailModel) async throws -> Bool {
+        let url = URL(string: "https://fastapi-production-6595.up.railway.app/cocktail/\(cocktail.id)")
+        var request = URLRequest(url: url!)
+        request.httpMethod = "PUT"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "accept")
+        request.httpBody = try JSONEncoder().encode(cocktail)
+        let (data, _) = try await URLSession.shared.data(for: request)
+        do {
+            let result = try JSONDecoder().decode(CocktailModel.self, from: data)
+            return !result.name.isEmpty
+        } catch {
+            print("fail updating this cocktail with error: \(error)")
+            print("Instead backend response with: \(String(data: data, encoding: .utf8) ?? "")")
+            return false
+        }
+    
+       }
+    
     func getRecipes() async throws -> [CocktailModel] {
         let myEndpoint: String = "https://fastapi-production-6595.up.railway.app/cocktail"
         let url = URL(string: myEndpoint)

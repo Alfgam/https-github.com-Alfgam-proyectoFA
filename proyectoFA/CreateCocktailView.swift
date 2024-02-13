@@ -41,7 +41,3 @@ struct CreateCocktailView: View {
         }
     }
 }
-
-#Preview {
-    CreateCocktailView()
-}

@@ -29,6 +29,17 @@ class NetworkingLayer {
         }
     
        }
+    func deleteCocktail(objetoABorrar cocktail: CocktailModel)  async throws -> Bool {
+        let myEndpoint = "https://fastapi-production-6595.up.railway.app/cocktail/\(cocktail.id)";
+        var request = URLRequest(url: URL(string: myEndpoint)!)
+        request.httpMethod = "DELETE"
+        
+        let (data, _) = try await URLSession.shared.data(for: request)
+        let result = try JSONDecoder().decode(DeleteCocktailModel.self, from: data)
+        return !result.message.isEmpty
+    }
+ 
+    
     
     func getRecipes() async throws -> [CocktailModel] {
         let myEndpoint: String = "https://fastapi-production-6595.up.railway.app/cocktail"
@@ -93,7 +104,7 @@ class NetworkingLayer {
     func deleteCocktail(cocktailID: Int) async throws -> Bool {
         let myEndpoint = "https://fastapi-production-6595.up.railway.app/cocktail/\(cocktailID)"
         var request = URLRequest(url: URL(string: myEndpoint)!)
-        request.httpMethod = "DELETE"
+        request.httpMethod = "DELET"
         
         let (data, _) = try await URLSession.shared.data(for: request)
         let result = try JSONDecoder().decode(DeleteCocktailModel.self, from: data)

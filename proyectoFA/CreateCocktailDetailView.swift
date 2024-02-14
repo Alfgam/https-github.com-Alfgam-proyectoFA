@@ -48,6 +48,24 @@ struct CreateCocktailDetailView: View {
             } label: {
                 Text("Editar")
             }
+            
+            Button {
+                
+                
+                Task {
+                    do {
+                        
+                        if try await NetworkingLayer().deleteCocktail(objetoABorrar: cocktail) {
+                           
+                        }
+                    } catch {
+                        print("Error al borrar el cóctel: \(error)")
+                    }
+                }
+            } label: {
+                Text("Borrar")
+            }
+
         }
     }
 }

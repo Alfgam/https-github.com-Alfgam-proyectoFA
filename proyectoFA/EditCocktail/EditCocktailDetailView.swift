@@ -1,19 +1,23 @@
 //
-//  CreateCocktailDetailView.swift
+//  EditCocktailDetailView.swift
 //  proyectoFA
 //
 //  Created by Alfonso Gamboa  on 07/02/24.
 //
 
 import SwiftUI
-struct CreateCocktailDetailView: View {
+
+struct EditCocktailDetailView: View {
    
     @State  var editedName: String = ""
     @State  var editedIngredients: String = ""
     @State  var editedRecipe: String = ""
-            var cocktail: CocktailModel
+    var cocktail: CocktailModel
+    var editViewModel: EditCocktailViewModelType
+    
     init(cocktail: CocktailModel) {
         self.cocktail = cocktail
+        self.editViewModel = EditCocktailViewModel()
     }
   
     var body: some View {
@@ -34,33 +38,16 @@ struct CreateCocktailDetailView: View {
                     ingredients: editedIngredients.components(separatedBy: ", "),
                     receip: editedRecipe.components(separatedBy: ", ")
                 )
-                
                 Task {
-                    do {
-                        if try await NetworkingLayer().editCocktail(cocktail: editedCocktail) {
-                            // Si la edición es exitosa, llama a la función de retorno para actualizar la lista en ContentView
-                            
-                        }
-                    } catch {
-                        print("Error al editar el cóctel: \(error)")
-                    }
+                    await editViewModel.edit(cocktailAEditar: editedCocktail)
                 }
             } label: {
                 Text("Editar")
             }
             
             Button {
-                
-                
                 Task {
-                    do {
-                        
-                        if try await NetworkingLayer().deleteCocktail(objetoABorrar: cocktail) {
-                           
-                        }
-                    } catch {
-                        print("Error al borrar el cóctel: \(error)")
-                    }
+                    await editViewModel.delete(cocktailABorrar: self.cocktail)
                 }
             } label: {
                 Text("Borrar")

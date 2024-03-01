@@ -24,7 +24,7 @@ struct CocktailDetailView: View {
             .toolbar {
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
                     NavigationLink(
-                        destination: CreateCocktailDetailView(cocktail: viewModel.cocktail),
+                        destination: EditCocktailDetailView(cocktail: viewModel.cocktail),
                         label: {
                             Text("Edit")
                         }

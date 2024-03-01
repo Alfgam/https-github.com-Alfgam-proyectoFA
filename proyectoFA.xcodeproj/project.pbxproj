@@ -14,6 +14,7 @@
 		6E9CFF1D2B156DAA00FB2A50 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E9CFF1C2B156DAA00FB2A50 /* Preview Assets.xcassets */; };
 		6E9CFF932B1EE3FE00FB2A50 /* CocktailDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E9CFF922B1EE3FD00FB2A50 /* CocktailDetailView.swift */; };
 		AC3ECBB32B22DBE00090DD76 /* CocktailDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3ECBB22B22DBE00090DD76 /* CocktailDetailViewModel.swift */; };
+		AC58F9942B9194E40051F002 /* CocktailImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC58F9932B9194E40051F002 /* CocktailImage.swift */; };
 		AC6EB6A92B159C2900234521 /* CocktailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6EB6A82B159C2900234521 /* CocktailView.swift */; };
 		AC7D421C2B2C070500ECD755 /* CocktailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7D421B2B2C070500ECD755 /* CocktailViewModel.swift */; };
 		AC7D421E2B2C075B00ECD755 /* CocktailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7D421D2B2C075B00ECD755 /* CocktailModel.swift */; };
@@ -32,6 +33,7 @@
 		6E9CFF1C2B156DAA00FB2A50 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		6E9CFF922B1EE3FD00FB2A50 /* CocktailDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailDetailView.swift; sourceTree = "<group>"; };
 		AC3ECBB22B22DBE00090DD76 /* CocktailDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailDetailViewModel.swift; sourceTree = "<group>"; };
+		AC58F9932B9194E40051F002 /* CocktailImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailImage.swift; sourceTree = "<group>"; };
 		AC6EB6A82B159C2900234521 /* CocktailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailView.swift; sourceTree = "<group>"; };
 		AC7D421B2B2C070500ECD755 /* CocktailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailViewModel.swift; sourceTree = "<group>"; };
 		AC7D421D2B2C075B00ECD755 /* CocktailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailModel.swift; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 				AC7D421D2B2C075B00ECD755 /* CocktailModel.swift */,
 				ACFBC7B82B47B7AA004410DE /* NetworkingLayer.swift */,
 				ACC339722B6CA3D0003BF9BC /* CreateCocktailView.swift */,
+				AC58F9932B9194E40051F002 /* CocktailImage.swift */,
 			);
 			path = proyectoFA;
 			sourceTree = "<group>";
@@ -185,6 +188,7 @@
 				AC7D421E2B2C075B00ECD755 /* CocktailModel.swift in Sources */,
 				ACFBC7B92B47B7AA004410DE /* NetworkingLayer.swift in Sources */,
 				ACC339732B6CA3D0003BF9BC /* CreateCocktailView.swift in Sources */,
+				AC58F9942B9194E40051F002 /* CocktailImage.swift in Sources */,
 				6E9CFF162B156DA600FB2A50 /* proyectoFAApp.swift in Sources */,
 				AC6EB6A92B159C2900234521 /* CocktailView.swift in Sources */,
 			);

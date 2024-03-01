@@ -8,10 +8,12 @@
 import SwiftUI
 
 struct EditCocktailDetailView: View {
-   
+    
     @State  var editedName: String = ""
     @State  var editedIngredients: String = ""
     @State  var editedRecipe: String = ""
+    @State  var imageUrl: String = ""
+    
     var cocktail: CocktailModel
     var editViewModel: EditCocktailViewModelType
     
@@ -19,15 +21,29 @@ struct EditCocktailDetailView: View {
         self.cocktail = cocktail
         self.editViewModel = EditCocktailViewModel()
     }
-  
+    
     var body: some View {
         VStack {
             TextField("Ingresa el nombre del cocktail", text: $editedName)
-                .onAppear { editedName = cocktail.name }
+                .padding(.bottom)
+                .onAppear {
+                    editedName = cocktail.name
+                }
             TextField("Ingresa los ingredientes", text: $editedIngredients)
-                .onAppear { editedIngredients = cocktail.ingredients.joined(separator: ", ") }
+                .padding(.bottom)
+                .onAppear {
+                    editedIngredients = cocktail.ingredients.joined(separator: ", ")
+                }
             TextField("Ingresa los pasos a seguir", text: $editedRecipe)
-                .onAppear { editedRecipe = (cocktail.receip?.joined(separator: ", "))! }
+                .padding(.bottom)
+                .onAppear {
+                    editedRecipe = cocktail.receip?.joined(separator: ", ") ?? ""
+                }
+            TextField("Ingresa la url de la imagen", text: $imageUrl)
+                .padding(.bottom)
+                .onAppear {
+                    imageUrl = cocktail.receip?.joined(separator: ", ") ?? ""
+                }
             
             Spacer()
             
@@ -36,13 +52,17 @@ struct EditCocktailDetailView: View {
                     id: cocktail.id,
                     name: editedName,
                     ingredients: editedIngredients.components(separatedBy: ", "),
-                    receip: editedRecipe.components(separatedBy: ", ")
+                    receip: editedRecipe.components(separatedBy: ", "),
+                    image: imageUrl
                 )
                 Task {
                     await editViewModel.edit(cocktailAEditar: editedCocktail)
                 }
             } label: {
                 Text("Editar")
+                    .padding()
+                    .foregroundStyle(Color.white)
+                    .background(Color.blue)
             }
             
             Button {
@@ -51,8 +71,22 @@ struct EditCocktailDetailView: View {
                 }
             } label: {
                 Text("Borrar")
+                    .padding()
+                    .foregroundStyle(Color.white)
+                    .background(Color.red)
             }
-
         }
+        .padding()
+    }
+}
+
+struct EditCocktailDetailView_Previews: PreviewProvider {
+    
+    static var previews: some View {
+        return EditCocktailDetailView(
+            cocktail: .init(
+                name: "Alfonso 13",
+                ingredients: [])
+        )
     }
 }

@@ -9,8 +9,6 @@ import Foundation
 
 class NetworkingLayer {
     
-    
-    
     func editCocktail(cocktail: CocktailModel) async throws -> Bool {
         let url = URL(string: "https://fastapi-production-6595.up.railway.app/cocktail/\(cocktail.id)")
         var request = URLRequest(url: url!)

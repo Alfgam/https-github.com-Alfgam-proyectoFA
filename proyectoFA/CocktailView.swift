@@ -21,10 +21,7 @@ struct CocktailView: View {
                             ForEach(viewModel.section1){ cocktail in
                                 NavigationLink(destination: CocktailDetailView(cocktail: cocktail)){
                                     VStack {
-                                        Image(cocktail.image ?? "drink1")
-                                            .resizable()
-                                            .scaledToFit()
-                                            .frame(width: UIScreen.main.bounds.width, height: 200)
+                                        CocktailImage(imageCocktail: cocktail.image)
                                         Text(cocktail.name)
                                             .font(.caption)
                                             .foregroundColor(.black)
@@ -39,9 +36,7 @@ struct CocktailView: View {
                             ForEach(viewModel.section2){ cocktail in
                                 NavigationLink(destination: CocktailDetailView(cocktail: cocktail)){
                                     VStack {
-                                        Image(cocktail.image ?? "drink1")
-                                            .resizable()
-                                            .scaledToFit()
+                                        CocktailImage(imageCocktail: cocktail.image)
                                             .frame(width: UIScreen.main.bounds.width, height: 200)
                                         Text(cocktail.name)
                                             .font(.caption)
@@ -57,9 +52,7 @@ struct CocktailView: View {
                             ForEach(viewModel.section3){ cocktail in
                                 NavigationLink(destination: CocktailDetailView(cocktail: cocktail)){
                                     VStack {
-                                        Image(cocktail.image ?? "drink1")
-                                            .resizable()
-                                            .scaledToFit()
+                                        CocktailImage(imageCocktail: cocktail.image)
                                             .frame(width: UIScreen.main.bounds.width, height: 200)
                                         Text(cocktail.name)
                                             .font(.caption)
@@ -119,7 +112,6 @@ struct CocktailView: View {
 struct Cocktail_Previews: PreviewProvider {
     static var previews: some View {
         return Group {
-            CocktailView()
             CocktailView()
         }
     }
